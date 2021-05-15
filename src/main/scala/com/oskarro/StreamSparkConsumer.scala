@@ -20,8 +20,8 @@ object StreamSparkConsumer {
                                           cassandraKeyspace: String,
                                           cassandraTable: String): Unit = {
 
-    import org.apache.spark.streaming._
     import org.apache.spark.SparkContext
+    import org.apache.spark.streaming._
 
     // Spark Session create
     val sparkSession = SparkSession
@@ -74,7 +74,6 @@ object StreamSparkConsumer {
       PreferConsistent,
       Subscribe[String, String](List(topic), kafkaParams)
     )
-
 
 
     import scala.util.parsing.json.JSON
