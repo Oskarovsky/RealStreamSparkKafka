@@ -1,5 +1,10 @@
 package com.oskarro.service
 
+import com.oskarro.config.Constants
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
+
+import java.util.Properties
+
 /**
  * KafkaService is a class that handle kafka process
  */
