@@ -31,13 +31,16 @@ object StreamSparkConsumer {
       .master("local[4]")
       .getOrCreate()
 
-    val sparkContext = sparkSession.sparkContext
+    val sparkContext: SparkContext = sparkSession.sparkContext
     sparkContext.setLogLevel("ERROR")
-    val ssc = new StreamingContext(sparkContext, Seconds(5))
+
+    val batchInterval = 10
+    val ssc = new StreamingContext(sparkContext, Seconds(batchInterval))
 
     import org.apache.spark.streaming.kafka010._
 
     val r = scala.util.Random
+
     // Generate a new Kafka Consumer group id every run
     val groupId = s"stream-checker-v${r.nextInt.toString}"
 
